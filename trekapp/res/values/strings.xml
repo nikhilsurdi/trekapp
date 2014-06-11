@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world2!</string>
     <string name="project_name">Trek app</string>
+    <string name="project_name1">Trek app1</string>
 
 
 </resources>
