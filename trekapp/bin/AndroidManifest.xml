@@ -6,11 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-<<<<<<< HEAD
-        android:targetSdkVersion="19" />
-=======
         android:targetSdkVersion="18" />
->>>>>>> prasad/master
 
    
     
