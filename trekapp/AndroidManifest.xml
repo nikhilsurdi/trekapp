@@ -8,8 +8,6 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
 
-   
-    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -23,6 +21,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.trekapp.Controllers.SignInActivity"
+            android:label="@string/title_activity_sign_in"
+            android:parentActivityName="com.trekapp.Controllers.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.trekapp.Controllers.MainActivity" />
         </activity>
     </application>
 
