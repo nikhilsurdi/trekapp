@@ -7,7 +7,7 @@
     tools:ignore="MergeRootFrame" >
 
     <TextView
-        android:id="@+id/textViewError1"
+        android:id="@+id/textViewErrorSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,13 +18,13 @@
         android:textColor="#FF0000" />
 
     <EditText
-        android:id="@+id/editTextSigninUsername"
+        android:id="@+id/editTextSigninEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editTextSigninPassword"
-        android:layout_below="@+id/textViewError1"
+        android:layout_below="@+id/textViewErrorSignin"
         android:ems="10"
-        android:inputType="text" >
+        android:inputType="textEmailAddress" >
 
         <requestFocus />
     </EditText>
@@ -33,7 +33,7 @@
         android:id="@+id/editTextSigninPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextSigninUsername"
+        android:layout_below="@+id/editTextSigninEmail"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textPassword" />
@@ -94,7 +94,7 @@
         android:inputType="textPassword" />
 
     <TextView
-        android:id="@+id/textViewError2"
+        android:id="@+id/textViewErrorSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonSignIn1"
@@ -102,5 +102,64 @@
         android:text=""
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#FF0000" />
+
+    <TextView
+        android:id="@+id/textViewSignupEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editTextSignupEmail"
+        android:layout_alignParentLeft="true"
+        android:text="Email"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSignupUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextSignupUsername"
+        android:layout_alignBottom="@+id/editTextSignupUsername"
+        android:layout_alignParentLeft="true"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSignupPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextSignupPassword"
+        android:layout_alignBottom="@+id/editTextSignupPassword"
+        android:layout_alignParentLeft="true"
+        android:text="Pass"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSignupRepassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextSignupRepassword"
+        android:layout_alignBottom="@+id/editTextSignupRepassword"
+        android:layout_alignParentLeft="true"
+        android:text="Re-pass"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSigninEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextSigninEmail"
+        android:layout_alignBottom="@+id/editTextSigninEmail"
+        android:layout_alignParentLeft="true"
+        android:text="Email"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textViewSigninPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editTextSigninPassword"
+        android:layout_alignBottom="@+id/editTextSigninPassword"
+        android:layout_alignParentLeft="true"
+        android:text="Pass"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

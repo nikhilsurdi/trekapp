@@ -5,8 +5,9 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="8" 
         android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -24,11 +25,8 @@
         </activity>
         <activity
             android:name="com.trekapp.Controllers.SignInActivity"
-            android:label="@string/title_activity_sign_in"
-            android:parentActivityName="com.trekapp.Controllers.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.trekapp.Controllers.MainActivity" />
+            android:label="@string/title_activity_sign_in" >
+            
         </activity>
     </application>
 
