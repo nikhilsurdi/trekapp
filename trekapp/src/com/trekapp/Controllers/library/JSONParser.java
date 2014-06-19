@@ -29,11 +29,11 @@ public class JSONParser extends AsyncTask<List<NameValuePair>, Void, JSONObject>
 	
 	static InputStream is = null;
 	static JSONObject jObj = null;
-	static String json = "";
+	String json = "";
 	
 	public SignInActivity signinActivity;
 	
-	private static String URL = "http://192.168.0.101/android_login_api/";
+	private static String URL = "http://192.168.0.100/android_login_api/";
 	private static String TAG = "tag";
 	private static String LOGIN_TAG = "login";
 	private static String REGISTER_TAG = "register";
@@ -84,6 +84,14 @@ public class JSONParser extends AsyncTask<List<NameValuePair>, Void, JSONObject>
 					jObj = new JSONObject(json);			
 				} catch (JSONException e) {
 					Log.e("JSON Parser", "Error parsing data " + e.toString());
+					String error = "{\"tag\":\"login\",\"success\":0,\"error\":1,\"error_msg\":\"No Internet Access!\"}";
+					try {
+						Log.e("ERROR", error);
+						jObj = new JSONObject(error);
+					} catch (JSONException f){
+						Log.e("JSON Parser", "Final Error" + f.toString());
+					}
+					
 				}
 				return jObj;
 	}

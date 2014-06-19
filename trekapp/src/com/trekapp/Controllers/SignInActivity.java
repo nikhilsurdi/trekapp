@@ -8,6 +8,7 @@ import com.trekapp.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -36,7 +37,7 @@ public class SignInActivity extends Activity {
 	// JSON Response node names
 	private static String KEY_SUCCESS = "success";
 //	private static String KEY_ERROR = "error";
-//	private static String KEY_ERROR_MSG = "error_msg";
+	private static String KEY_ERROR_MSG = "error_msg";
 	private static String KEY_UID = "uid";
 	private static String KEY_NAME = "name";
 	private static String KEY_EMAIL = "email";
@@ -64,11 +65,16 @@ public class SignInActivity extends Activity {
 			
 			@Override
 			public void onClick(View arg0) {
+				textviewErrorsignup.setText("");
 				String email = signinEmail.getText().toString();
 				String password = signinPassword.getText().toString();
 				
-				UserFunctions userFunction = new UserFunctions(SignInActivity.this);
-				userFunction.loginUser(email, password);
+				if (signinEmail.length() != 0 && signinPassword.length() != 0) {
+					UserFunctions userFunction = new UserFunctions(SignInActivity.this);
+					userFunction.loginUser(email, password);
+				}
+				else
+					textviewErrorsignin.setText("Fields cannot be empty!");
 			}
 			
 		});	
@@ -84,13 +90,20 @@ public class SignInActivity extends Activity {
 				String name = signupUsername.getText().toString();
 				String repassword = signupRepassword.getText().toString();
 				
-				if (password.equals(repassword)) {
-					UserFunctions userFunction = new UserFunctions(SignInActivity.this);
-					userFunction.registerUser(name, email, password);
+				if (signupEmail.length() != 0 && signupPassword.length() != 0 && signupRepassword.length() != 0 && signupUsername.length() != 0) {
+					if (isValidEmail(email)) {
+						if (password.equals(repassword)) {
+							UserFunctions userFunction = new UserFunctions(SignInActivity.this);
+							userFunction.registerUser(name, email, password);
+						}
+						else
+							textviewErrorsignup.setText("Passwords do not match!");
+					}
+					else
+						textviewErrorsignup.setText("Please enter valid email address!");
 				}
 				else
-					textviewErrorsignup.setText("Passwords do not match");
-				
+					textviewErrorsignup.setText("Fields cannot be empty!");
 				
 			}
 		});
@@ -100,7 +113,6 @@ public class SignInActivity extends Activity {
 	
 	// Nik : Function to process after login function thread
 		public void ProcessLoginData(JSONObject json){
-			textviewErrorsignup.setText("");
 			UserFunctionsOther userFunctionOther = new UserFunctionsOther();
 			try {
 				if (json.getString(KEY_SUCCESS) != null) {
@@ -127,7 +139,7 @@ public class SignInActivity extends Activity {
 						finish();
 					}else{
 						// Error in login
-						this.textviewErrorsignin.setText("Incorrect username/password");
+						this.textviewErrorsignin.setText(json.getString(KEY_ERROR_MSG));
 					}
 				}
 			} catch (JSONException e) {
@@ -162,12 +174,16 @@ public class SignInActivity extends Activity {
 						finish();
 					}else{
 						// Error in registration
-						textviewErrorsignup.setText("Error occured in registration");
+						textviewErrorsignup.setText("json.getString(KEY_ERROR_MSG)");
 					}
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
+		}
+		
+		public final static boolean isValidEmail(CharSequence target) {
+			  return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
 		}
 
 
